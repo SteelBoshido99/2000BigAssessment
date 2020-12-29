@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="BigAssessment" version="4">
+  <OBJECT>
+    <ID name="BigAssessment" mc="Standard.Project" uid="fc007d4d-ce3c-4ee3-979e-f20c6dd9bd57"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[BigAssessment]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Model">
+        <COMPID name="bigassessment" mc="Standard.Package" uid="158f9a3f-ea52-4f55-bb18-8055ceef53b8"/>
+      </COMP>
+      <COMP relation="DiagramRoot">
+        <COMPID name="BigAssessment" mc="Infrastructure.DiagramSet" uid="bd632c09-080d-4d6a-abf5-6ff550f43d1f"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

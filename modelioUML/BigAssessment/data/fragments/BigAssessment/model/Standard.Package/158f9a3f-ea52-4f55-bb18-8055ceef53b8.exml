@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="com" version="4">
+  <OBJECT>
+    <ID name="com" mc="Standard.Package" uid="158f9a3f-ea52-4f55-bb18-8055ceef53b8"/>
+    <PID name="BigAssessment" mc="Standard.Project" uid="fc007d4d-ce3c-4ee3-979e-f20c6dd9bd57"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[com]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="GeneralInterface" mc="Standard.Interface" uid="5264c32f-b1f5-4245-a44d-285432bd711d"/>
+        <COMPID name="Admin" mc="Standard.Class" uid="54958562-e7ba-4b5a-bb4d-42455de5262d"/>
+        <COMPID name="Stock" mc="Standard.Class" uid="9bb6fe79-e8fe-41ae-98b1-1fbe53f31a1f"/>
+        <COMPID name="Recipt" mc="Standard.Class" uid="d61396da-055a-4484-931e-e97c50a07fb1"/>
+        <COMPID name="Login" mc="Standard.Interface" uid="7f6f6631-f651-46da-85db-0b6e84c48a23"/>
+        <COMPID name="StockDisplay" mc="Standard.Interface" uid="9f7875b8-a830-4fc9-ae91-dac853a460d6"/>
+        <COMPID name="PaymentMethod" mc="Standard.Interface" uid="074d443d-030c-4b5b-845d-a4bd632dc42a"/>
+      </COMP>
+      <LINK relation="Extension">
+        <FOREIGNID name="JavaPackage" mc="Infrastructure.Stereotype" uid="01ec23a8-0000-0126-0000-000000000000"/>
+      </LINK>
+      <COMP relation="Product">
+        <COMPID name="Checkout System" mc="Standard.ClassDiagram" uid="584cd684-63c6-4fb2-b7f1-0a52899c89e8"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
