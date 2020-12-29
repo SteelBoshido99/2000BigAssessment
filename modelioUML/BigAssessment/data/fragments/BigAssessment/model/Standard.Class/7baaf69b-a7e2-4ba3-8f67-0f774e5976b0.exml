@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Admin" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="CustomerGUI" version="4">
   <OBJECT>
-    <ID name="Admin" mc="Standard.Class" uid="54958562-e7ba-4b5a-bb4d-42455de5262d"/>
+    <ID name="CustomerGUI" mc="Standard.Class" uid="7baaf69b-a7e2-4ba3-8f67-0f774e5976b0"/>
     <PID name="com" mc="Standard.Package" uid="158f9a3f-ea52-4f55-bb18-8055ceef53b8"/>
     <ATTRIBUTES>
       <ATT name="IsActive">false</ATT>
@@ -11,13 +11,13 @@
       <ATT name="IsLeaf">false</ATT>
       <ATT name="IsRoot">false</ATT>
       <ATT name="Visibility">Public</ATT>
-      <ATT name="Name"><![CDATA[Admin]]></ATT>
+      <ATT name="Name"><![CDATA[CustomerGUI]]></ATT>
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
     <DEPENDENCIES>
       <COMP relation="OwnedOperation">
         <OBJECT>
-          <ID name="DeccreseStock" mc="Standard.Operation" uid="0d2240e4-6866-4a1f-92a4-960f9a8013bc"/>
+          <ID name="DisplayProduct" mc="Standard.Operation" uid="12e2ca60-8148-4773-9ed6-3fdab836668a"/>
           <ATTRIBUTES>
             <ATT name="Concurrency">false</ATT>
             <ATT name="Final">false</ATT>
@@ -25,19 +25,19 @@
             <ATT name="Visibility">Public</ATT>
             <ATT name="IsClass">false</ATT>
             <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[DeccreseStock]]></ATT>
+            <ATT name="Name"><![CDATA[DisplayProduct]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
             <LINK relation="Redefines">
               <REFOBJ>
-                <ID name="DeccreseStock" mc="Standard.Operation" uid="3cf030fd-b097-4c43-956d-b7ffd4f7e92f"/>
+                <ID name="DisplayProduct" mc="Standard.Operation" uid="345ac923-df5a-4e93-b95e-3fed5e1252a8"/>
               </REFOBJ>
             </LINK>
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="IncreaseStock" mc="Standard.Operation" uid="4683baad-1359-4994-ac52-7b3285c357f2"/>
+          <ID name="Login" mc="Standard.Operation" uid="912a2543-30ae-43d4-9f9e-319241cd4537"/>
           <ATTRIBUTES>
             <ATT name="Concurrency">false</ATT>
             <ATT name="Final">false</ATT>
@@ -45,19 +45,19 @@
             <ATT name="Visibility">Public</ATT>
             <ATT name="IsClass">false</ATT>
             <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[IncreaseStock]]></ATT>
+            <ATT name="Name"><![CDATA[Login]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
             <LINK relation="Redefines">
               <REFOBJ>
-                <ID name="IncreaseStock" mc="Standard.Operation" uid="e6853bc0-a410-4d3a-92b4-48e0071d7b11"/>
+                <ID name="Login" mc="Standard.Operation" uid="e0f4235d-fc86-438c-99c0-034085ddb1ad"/>
               </REFOBJ>
             </LINK>
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="OrderStock" mc="Standard.Operation" uid="8cf31504-b18c-4bab-88a5-4d5404460012"/>
+          <ID name="ScannedItems" mc="Standard.Operation" uid="a5ea710d-fcaa-4dfb-ab34-44cdeb27e39c"/>
           <ATTRIBUTES>
             <ATT name="Concurrency">false</ATT>
             <ATT name="Final">false</ATT>
@@ -65,37 +65,17 @@
             <ATT name="Visibility">Public</ATT>
             <ATT name="IsClass">false</ATT>
             <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[OrderStock]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Redefines">
-              <REFOBJ>
-                <ID name="OrderStock" mc="Standard.Operation" uid="48c12923-55ea-4fe4-abd0-c69f1d6ecd82"/>
-              </REFOBJ>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="LowStock" mc="Standard.Operation" uid="f7212964-36ab-44d1-88c4-b952368ee25b"/>
-          <ATTRIBUTES>
-            <ATT name="Concurrency">false</ATT>
-            <ATT name="Final">false</ATT>
-            <ATT name="Passing">MethodOut</ATT>
-            <ATT name="Visibility">Public</ATT>
-            <ATT name="IsClass">false</ATT>
-            <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[LowStock]]></ATT>
+            <ATT name="Name"><![CDATA[ScannedItems]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
             <COMP relation="IO">
               <OBJECT>
-                <ID name="Notify" mc="Standard.Parameter" uid="0f2009f5-ff21-4e27-8210-d03210736662"/>
+                <ID name="Items" mc="Standard.Parameter" uid="b670aa55-6f56-4bf2-9394-5869fc52d688"/>
                 <ATTRIBUTES>
-                  <ATT name="ParameterPassing">Out</ATT>
-                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
-                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[*]]></ATT>
                   <ATT name="TypeConstraint"></ATT>
                   <ATT name="DefaultValue"></ATT>
                   <ATT name="IsOrdered">false</ATT>
@@ -103,7 +83,7 @@
                   <ATT name="IsException">false</ATT>
                   <ATT name="IsStream">false</ATT>
                   <ATT name="Effect">ReadEffect</ATT>
-                  <ATT name="Name"><![CDATA[Notify]]></ATT>
+                  <ATT name="Name"><![CDATA[Items]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
                 <DEPENDENCIES>
@@ -115,7 +95,47 @@
             </COMP>
             <LINK relation="Redefines">
               <REFOBJ>
-                <ID name="LowStock" mc="Standard.Operation" uid="cfdbdab8-4c01-494e-9b78-e2d679a26fc4"/>
+                <ID name="ScannedItems" mc="Standard.Operation" uid="b547726a-8a76-496d-be2c-e70054e0213a"/>
+              </REFOBJ>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Pay" mc="Standard.Operation" uid="14677ca5-93ee-4036-83e8-76dedf6964ae"/>
+          <ATTRIBUTES>
+            <ATT name="Concurrency">false</ATT>
+            <ATT name="Final">false</ATT>
+            <ATT name="Passing">MethodOut</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[Pay]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Redefines">
+              <REFOBJ>
+                <ID name="Pay" mc="Standard.Operation" uid="8e4b6f91-a5c0-4fae-af40-fad18bcf6c94"/>
+              </REFOBJ>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="DeleteItem" mc="Standard.Operation" uid="1329e593-bc73-4a29-ba88-42a0050c3724"/>
+          <ATTRIBUTES>
+            <ATT name="Concurrency">false</ATT>
+            <ATT name="Final">false</ATT>
+            <ATT name="Passing">MethodOut</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[DeleteItem]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Redefines">
+              <REFOBJ>
+                <ID name="DeleteItem" mc="Standard.Operation" uid="d5229985-cb45-4c07-800b-f85880b01f2c"/>
               </REFOBJ>
             </LINK>
           </DEPENDENCIES>
@@ -123,7 +143,7 @@
       </COMP>
       <COMP relation="OwnedEnd">
         <OBJECT>
-          <ID name="stockDisp" mc="Standard.AssociationEnd" uid="f9c6e0b0-0559-4262-8f66-0aba9093a13f"/>
+          <ID name="recipt" mc="Standard.AssociationEnd" uid="2f222795-eebf-41c5-89e1-a46429d4d517"/>
           <ATTRIBUTES>
             <ATT name="Aggregation">KindIsAssociation</ATT>
             <ATT name="IsChangeable">true</ATT>
@@ -131,21 +151,21 @@
             <ATT name="IsDerived">false</ATT>
             <ATT name="IsOrdered">false</ATT>
             <ATT name="IsUnique">false</ATT>
-            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
             <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
             <ATT name="Visibility">Public</ATT>
             <ATT name="IsClass">false</ATT>
             <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[stockDisp]]></ATT>
+            <ATT name="Name"><![CDATA[recipt]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
             <LINK relation="Target">
-              <ID name="StockDisp" mc="Standard.Class" uid="42d2283d-b489-439f-811b-12944cc207d3"/>
+              <ID name="Recipt" mc="Standard.Class" uid="d61396da-055a-4484-931e-e97c50a07fb1"/>
             </LINK>
             <COMP relation="Opposite">
               <OBJECT>
-                <ID name="" mc="Standard.AssociationEnd" uid="6ea27f72-b91e-4079-b470-95c99c5cb5bf"/>
+                <ID name="" mc="Standard.AssociationEnd" uid="2759a9d9-011e-4ab2-b572-a1d8dd681d90"/>
                 <ATTRIBUTES>
                   <ATT name="Aggregation">KindIsAssociation</ATT>
                   <ATT name="IsChangeable">true</ATT>
@@ -154,7 +174,7 @@
                   <ATT name="IsOrdered">false</ATT>
                   <ATT name="IsUnique">false</ATT>
                   <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
-                  <ATT name="MultiplicityMax"><![CDATA[*]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
                   <ATT name="Visibility">Public</ATT>
                   <ATT name="IsClass">false</ATT>
                   <ATT name="IsAbstract">false</ATT>
@@ -163,11 +183,11 @@
                 </ATTRIBUTES>
                 <DEPENDENCIES>
                   <COMP relation="Opposite">
-                    <COMPID name="stockDisp" mc="Standard.AssociationEnd" uid="f9c6e0b0-0559-4262-8f66-0aba9093a13f"/>
+                    <COMPID name="recipt" mc="Standard.AssociationEnd" uid="2f222795-eebf-41c5-89e1-a46429d4d517"/>
                   </COMP>
                   <COMP relation="Association">
                     <OBJECT>
-                      <ID name="" mc="Standard.Association" uid="9d1dea76-a521-4e90-aa1f-3c8821643241"/>
+                      <ID name="" mc="Standard.Association" uid="5da57294-f1b5-4df4-90a9-827af8248a75"/>
                       <ATTRIBUTES>
                         <ATT name="Name"></ATT>
                         <ATT name="status">1970354901745664</ATT>
@@ -179,21 +199,21 @@
               </OBJECT>
             </COMP>
             <COMP relation="Association">
-              <COMPID name="" mc="Standard.Association" uid="9d1dea76-a521-4e90-aa1f-3c8821643241"/>
+              <COMPID name="" mc="Standard.Association" uid="5da57294-f1b5-4df4-90a9-827af8248a75"/>
             </COMP>
           </DEPENDENCIES>
         </OBJECT>
       </COMP>
       <COMP relation="Realized">
         <OBJECT>
-          <ID name="InterfaceRealization" mc="Standard.InterfaceRealization" uid="419b482a-6edc-4fa7-b6b3-8ba3b7a26e62"/>
+          <ID name="InterfaceRealization" mc="Standard.InterfaceRealization" uid="4c7f1901-504a-409b-a986-1f0426057d37"/>
           <ATTRIBUTES>
             <ATT name="Name"><![CDATA[InterfaceRealization]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
             <LINK relation="Implemented">
-              <ID name="Stock" mc="Standard.Interface" uid="2d7f50fe-d1c7-451e-8978-666899dccdc8"/>
+              <ID name="GeneralInterface" mc="Standard.Interface" uid="5264c32f-b1f5-4245-a44d-285432bd711d"/>
             </LINK>
           </DEPENDENCIES>
         </OBJECT>

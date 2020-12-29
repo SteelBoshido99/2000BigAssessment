@@ -16,11 +16,12 @@
       <COMP relation="OwnedElement">
         <COMPID name="GeneralInterface" mc="Standard.Interface" uid="5264c32f-b1f5-4245-a44d-285432bd711d"/>
         <COMPID name="Admin" mc="Standard.Class" uid="54958562-e7ba-4b5a-bb4d-42455de5262d"/>
-        <COMPID name="Stock" mc="Standard.Class" uid="9bb6fe79-e8fe-41ae-98b1-1fbe53f31a1f"/>
         <COMPID name="Recipt" mc="Standard.Class" uid="d61396da-055a-4484-931e-e97c50a07fb1"/>
         <COMPID name="Login" mc="Standard.Interface" uid="7f6f6631-f651-46da-85db-0b6e84c48a23"/>
-        <COMPID name="StockDisplay" mc="Standard.Interface" uid="9f7875b8-a830-4fc9-ae91-dac853a460d6"/>
-        <COMPID name="PaymentMethod" mc="Standard.Interface" uid="074d443d-030c-4b5b-845d-a4bd632dc42a"/>
+        <COMPID name="Stock" mc="Standard.Interface" uid="2d7f50fe-d1c7-451e-8978-666899dccdc8"/>
+        <COMPID name="CustomerGUI" mc="Standard.Class" uid="7baaf69b-a7e2-4ba3-8f67-0f774e5976b0"/>
+        <COMPID name="StockDisp" mc="Standard.Class" uid="42d2283d-b489-439f-811b-12944cc207d3"/>
+        <COMPID name="RawProducts" mc="Standard.Class" uid="474e1800-9a33-4160-a3c9-771ab7587291"/>
       </COMP>
       <LINK relation="Extension">
         <FOREIGNID name="JavaPackage" mc="Infrastructure.Stereotype" uid="01ec23a8-0000-0126-0000-000000000000"/>
