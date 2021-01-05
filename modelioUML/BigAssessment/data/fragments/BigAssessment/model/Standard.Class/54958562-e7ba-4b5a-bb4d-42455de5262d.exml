@@ -17,7 +17,7 @@
     <DEPENDENCIES>
       <COMP relation="OwnedOperation">
         <OBJECT>
-          <ID name="DeccreseStock" mc="Standard.Operation" uid="0d2240e4-6866-4a1f-92a4-960f9a8013bc"/>
+          <ID name="CheckUsername" mc="Standard.Operation" uid="8c49590a-99dc-45f7-85c7-e73f45840350"/>
           <ATTRIBUTES>
             <ATT name="Concurrency">false</ATT>
             <ATT name="Final">false</ATT>
@@ -25,75 +25,15 @@
             <ATT name="Visibility">Public</ATT>
             <ATT name="IsClass">false</ATT>
             <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[DeccreseStock]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Redefines">
-              <REFOBJ>
-                <ID name="DeccreseStock" mc="Standard.Operation" uid="3cf030fd-b097-4c43-956d-b7ffd4f7e92f"/>
-              </REFOBJ>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="IncreaseStock" mc="Standard.Operation" uid="4683baad-1359-4994-ac52-7b3285c357f2"/>
-          <ATTRIBUTES>
-            <ATT name="Concurrency">false</ATT>
-            <ATT name="Final">false</ATT>
-            <ATT name="Passing">MethodOut</ATT>
-            <ATT name="Visibility">Public</ATT>
-            <ATT name="IsClass">false</ATT>
-            <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[IncreaseStock]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Redefines">
-              <REFOBJ>
-                <ID name="IncreaseStock" mc="Standard.Operation" uid="e6853bc0-a410-4d3a-92b4-48e0071d7b11"/>
-              </REFOBJ>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="OrderStock" mc="Standard.Operation" uid="8cf31504-b18c-4bab-88a5-4d5404460012"/>
-          <ATTRIBUTES>
-            <ATT name="Concurrency">false</ATT>
-            <ATT name="Final">false</ATT>
-            <ATT name="Passing">MethodOut</ATT>
-            <ATT name="Visibility">Public</ATT>
-            <ATT name="IsClass">false</ATT>
-            <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[OrderStock]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Redefines">
-              <REFOBJ>
-                <ID name="OrderStock" mc="Standard.Operation" uid="48c12923-55ea-4fe4-abd0-c69f1d6ecd82"/>
-              </REFOBJ>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="LowStock" mc="Standard.Operation" uid="f7212964-36ab-44d1-88c4-b952368ee25b"/>
-          <ATTRIBUTES>
-            <ATT name="Concurrency">false</ATT>
-            <ATT name="Final">false</ATT>
-            <ATT name="Passing">MethodOut</ATT>
-            <ATT name="Visibility">Public</ATT>
-            <ATT name="IsClass">false</ATT>
-            <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[LowStock]]></ATT>
+            <ATT name="Name"><![CDATA[CheckUsername]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
             <COMP relation="IO">
               <OBJECT>
-                <ID name="Notify" mc="Standard.Parameter" uid="0f2009f5-ff21-4e27-8210-d03210736662"/>
+                <ID name="Username" mc="Standard.Parameter" uid="c51cb17a-9747-4398-8a97-3a65ca875754"/>
                 <ATTRIBUTES>
-                  <ATT name="ParameterPassing">Out</ATT>
+                  <ATT name="ParameterPassing">In</ATT>
                   <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
                   <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
                   <ATT name="TypeConstraint"></ATT>
@@ -103,7 +43,7 @@
                   <ATT name="IsException">false</ATT>
                   <ATT name="IsStream">false</ATT>
                   <ATT name="Effect">ReadEffect</ATT>
-                  <ATT name="Name"><![CDATA[Notify]]></ATT>
+                  <ATT name="Name"><![CDATA[Username]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
                 <DEPENDENCIES>
@@ -115,7 +55,51 @@
             </COMP>
             <LINK relation="Redefines">
               <REFOBJ>
-                <ID name="LowStock" mc="Standard.Operation" uid="cfdbdab8-4c01-494e-9b78-e2d679a26fc4"/>
+                <ID name="CheckUsername" mc="Standard.Operation" uid="a5f79b2c-a2b9-4cc1-8697-efafb2e3764e"/>
+              </REFOBJ>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="CheckPassword" mc="Standard.Operation" uid="8348a5e9-c651-4c1d-ad19-2d7a9a40ed76"/>
+          <ATTRIBUTES>
+            <ATT name="Concurrency">false</ATT>
+            <ATT name="Final">false</ATT>
+            <ATT name="Passing">MethodOut</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[CheckPassword]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="IO">
+              <OBJECT>
+                <ID name="Password" mc="Standard.Parameter" uid="a9a0ac26-22be-4e08-a32d-fd4fdfc965a0"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"><![CDATA[Password]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <FOREIGNID name="string" mc="Standard.DataType" uid="00000004-0000-000d-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <LINK relation="Redefines">
+              <REFOBJ>
+                <ID name="CheckPassword" mc="Standard.Operation" uid="d1da8921-3054-4249-8aa7-48a73f8827cc"/>
               </REFOBJ>
             </LINK>
           </DEPENDENCIES>
@@ -186,14 +170,14 @@
       </COMP>
       <COMP relation="Realized">
         <OBJECT>
-          <ID name="InterfaceRealization" mc="Standard.InterfaceRealization" uid="419b482a-6edc-4fa7-b6b3-8ba3b7a26e62"/>
+          <ID name="InterfaceRealization" mc="Standard.InterfaceRealization" uid="340d07b3-563f-49cb-95e1-498d9f5c8d28"/>
           <ATTRIBUTES>
             <ATT name="Name"><![CDATA[InterfaceRealization]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
             <LINK relation="Implemented">
-              <ID name="Stock" mc="Standard.Interface" uid="2d7f50fe-d1c7-451e-8978-666899dccdc8"/>
+              <ID name="Login" mc="Standard.Interface" uid="7f6f6631-f651-46da-85db-0b6e84c48a23"/>
             </LINK>
           </DEPENDENCIES>
         </OBJECT>

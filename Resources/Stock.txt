@@ -1,0 +1,6 @@
+Item Code|Item Name|Item Price|Stock lvl
+5474125|Hot Chocolate|3.00|70
+5478568|Bread|2.00|70
+5478652|Apple|1.00|70
+5472312|Nvidia GPU|400.00|70
+5472158|Biscuit|1.00|70

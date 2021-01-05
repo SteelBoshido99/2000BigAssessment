@@ -21,7 +21,6 @@
         <COMPID name="Stock" mc="Standard.Interface" uid="2d7f50fe-d1c7-451e-8978-666899dccdc8"/>
         <COMPID name="CustomerGUI" mc="Standard.Class" uid="7baaf69b-a7e2-4ba3-8f67-0f774e5976b0"/>
         <COMPID name="StockDisp" mc="Standard.Class" uid="42d2283d-b489-439f-811b-12944cc207d3"/>
-        <COMPID name="RawProducts" mc="Standard.Class" uid="474e1800-9a33-4160-a3c9-771ab7587291"/>
       </COMP>
       <LINK relation="Extension">
         <FOREIGNID name="JavaPackage" mc="Infrastructure.Stereotype" uid="01ec23a8-0000-0126-0000-000000000000"/>
