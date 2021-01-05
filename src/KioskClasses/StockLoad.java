@@ -12,7 +12,7 @@ public class StockLoad {
 
 
 
-    public final ArrayList<KioskClasses.Stock> stocks = new ArrayList<>();
+    public final ArrayList<Stock> stocks = new ArrayList<>();
 
     public void load(){
         try{
@@ -26,12 +26,12 @@ public class StockLoad {
 
                 String[] stockData = data.split(separator);
 
+                System.out.println(stockData[2]);
+
                 Stock newStock = new Stock();
 
             }
 
-
- 
 
         }catch (FileNotFoundException e) {
             e.printStackTrace();

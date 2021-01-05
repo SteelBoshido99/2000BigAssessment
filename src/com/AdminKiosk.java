@@ -10,6 +10,10 @@ public class AdminKiosk {
     private JButton btnRemove;
     private JButton btnExit;
 
+
+
+
+
 }
 
 
