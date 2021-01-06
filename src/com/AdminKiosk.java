@@ -1,7 +1,6 @@
 package com;
 
-import KioskClasses.Stock;
-import KioskClasses.StockLoad;
+import KioskClasses.stockDataManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class AdminKiosk extends JFrame {
+public class AdminKiosk extends JFrame{
 
     private static  Object currentWindow;
 
@@ -22,12 +21,12 @@ public class AdminKiosk extends JFrame {
     private JButton btnLoadStock;
 
         public AdminKiosk(){
-            setContentPane(AdminPanel);
 
+            setContentPane(AdminPanel);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setPreferredSize(new Dimension(500, 500));
 
-            StockLoad stkDisplay = new StockLoad();
+            stockDataManager stkDisplay = new stockDataManager();
 
             stkDisplay.load();
 
@@ -39,6 +38,11 @@ public class AdminKiosk extends JFrame {
             });
 
         }
+
+    public static void main(String[] args) {
+            AdminKiosk adminView = new AdminKiosk();
+            adminView.setVisible(true);
+    }
 
 
 
