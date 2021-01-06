@@ -15,6 +15,7 @@ public class StockLoad {
     public final ArrayList<Stock> stocks = new ArrayList<>();
 
     public void load(){
+
         try{
 
             File stockFile = new File(stockPath);
@@ -25,8 +26,6 @@ public class StockLoad {
                 String data = stockScanner.nextLine();
 
                 String[] stockData = data.split(separator);
-
-                System.out.println(stockData[2]);
 
                 Stock newStock = new Stock();
 
