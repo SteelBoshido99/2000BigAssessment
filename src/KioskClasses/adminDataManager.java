@@ -9,9 +9,13 @@ public class adminDataManager {
     public String adminPath = "resources\\Admin.txt";
     public String separator = "\\|";
 
-    public ArrayList<Admin> admins = new ArrayList<>();
+    public  ArrayList<Admin> getAdmins(){
+        return admins;
+    }
 
-    public void adminload(){
+    private ArrayList<Admin> admins = new ArrayList<>();
+
+    public void adminLoad(){
 
         try{
             File adminFile = new File(adminPath);

@@ -11,7 +11,7 @@ public class stockDataManager {
 
 
 
-    public ArrayList<Stock> stocks = new ArrayList<>();
+    private ArrayList<Stock> stocks = new ArrayList<>();
 
 
     //This will load in the stock data from the specified file path
@@ -55,7 +55,7 @@ public class stockDataManager {
         }
     }
 
-    
+
     public void saveStock (){
         try{
             FileWriter stockWriter  = new FileWriter (stockPath);
