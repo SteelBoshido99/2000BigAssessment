@@ -4,7 +4,7 @@ public class Stock {
 
     private String ItemName;
     private int ItemID;
-    private double ItemPrice;
+    private float ItemPrice;
     private int Quantity;
 
 
@@ -24,11 +24,11 @@ public class Stock {
         ItemID = itemID;
     }
 
-    public double getItemPrice() {
+    public float getItemPrice() {
         return ItemPrice;
     }
 
-    public void setItemPrice(double itemPrice) {
+    public void setItemPrice(float itemPrice) {
         ItemPrice = itemPrice;
     }
 
