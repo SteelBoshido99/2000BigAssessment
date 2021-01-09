@@ -3,7 +3,7 @@ package KioskClasses;
 public class Stock {
 
     private String ItemName;
-    private int ItemID;
+    private String ItemID;
     private float ItemPrice;
     private int Quantity;
 
@@ -16,11 +16,11 @@ public class Stock {
         ItemName = itemName;
     }
 
-    public int getItemID() {
+    public String getItemID() {
         return ItemID;
     }
 
-    public void setItemID(int itemID) {
+    public void setItemID(String itemID) {
         ItemID = itemID;
     }
 

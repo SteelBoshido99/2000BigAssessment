@@ -17,6 +17,7 @@ public class AdminKiosk extends JFrame{
     private JPanel AdminPanel;
     private JButton btnOrder;
     private JTable table1;
+    private JButton btnSave;
     private JButton btnLoadStock;
 
         public AdminKiosk(){
@@ -25,9 +26,6 @@ public class AdminKiosk extends JFrame{
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setPreferredSize(new Dimension(500, 500));
 
-            stockDataManager stkDisplay = new stockDataManager();
-
-            stkDisplay.stockLoad();
         }
 
     public static void main(String[] args) {

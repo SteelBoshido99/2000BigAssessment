@@ -9,6 +9,7 @@ public class stockDataManager {
     public String stockPath = "resources\\Stock.txt";
     public String separator = "\\|";
 
+    public ArrayList<Stock> getStocks(){return stocks;}
 
 
     private ArrayList<Stock> stocks = new ArrayList<>();
@@ -31,8 +32,8 @@ public class stockDataManager {
 
                 Stock newStock = new Stock();
 
-                int inItemID = Integer.parseInt(stockData[0]);
-                newStock.setItemID(inItemID);
+
+                newStock.setItemID(stockData[0]);
 
                 newStock.setItemName(stockData[1]);
 
