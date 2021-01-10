@@ -1,6 +1,5 @@
 package com;
 
-import KioskClasses.Admin;
 import KioskClasses.Stock;
 import KioskClasses.stockDataManager;
 
@@ -15,8 +14,8 @@ public class CustomerKiosk extends JFrame{
     private JButton btnPay;
     private JButton btnLogin;
     private JButton btnAdd;
-    private JPanel CustPannel;
-    private JTextField txtScanedItem;
+    private JPanel mainPanel;
+    private JTextField txtScannedItem;
     private JLabel lblTotal;
 
 
@@ -25,7 +24,9 @@ public class CustomerKiosk extends JFrame{
     public void setTempArrayStock(ArrayList<Stock> tempStock){
         this.subStock = tempStock;
     }
-    float finalTotal = 0f;
+
+
+    public static float finalTotal = 0f;
 
 
     public CustomerKiosk() {
@@ -34,7 +35,7 @@ public class CustomerKiosk extends JFrame{
         display.stockLoad();
         setTempArrayStock(display.getStocks());
 
-        setContentPane(CustPannel);
+        setContentPane(mainPanel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(500, 500));
 
@@ -50,28 +51,40 @@ public class CustomerKiosk extends JFrame{
         });
 
 
-        
 
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 Stock addedStock = new Stock();
-                addedStock.setItemID(txtScanedItem.getText());
-
+                addedStock.setItemID(txtScannedItem.getText());
 
                 try{
                     for (int a = 0; a < subStock.size(); a ++){
                         if (addedStock.getItemID().equals(subStock.get(a).getItemID())){
-                            //if(subStock.get(a).getQuantity() < )
+                            /* This will check to see if the scanned item already exists in the basket
+                            and then add a multiplier to the item*/
 
+                           /*  if(addedStock.getItemID().equals(txtBasket.getText())){
+
+                                System.out.println("This can work");
+
+                             }*/
+
+
+                            //Prints out the scanned item on a new line, by list form
                             txtBasket.append(subStock.get(a).getItemName() + "\n");
 
+
+
                             float basketTotal = subStock.get(a).getItemPrice();
+                            //Provides a middle ground so that the accumulated total is displayed
                             float runningTotal = Float.sum (basketTotal,finalTotal);
                             finalTotal = runningTotal;
 
-                            lblTotal.setText(String.valueOf(finalTotal));
+
+                            String priceToString = String.format("%.02f",finalTotal);
+                            lblTotal.setText(" £ " + priceToString);
                             break;
 
                         }
@@ -81,7 +94,6 @@ public class CustomerKiosk extends JFrame{
                 }
             }
         });
-
     }
 
     public static void main(String[] args) {
