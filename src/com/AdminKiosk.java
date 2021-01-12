@@ -25,6 +25,7 @@ public class AdminKiosk extends JFrame{
             setContentPane(AdminPanel);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setPreferredSize(new Dimension(500, 500));
+            pack();
 
         }
 

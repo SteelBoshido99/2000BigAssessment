@@ -33,7 +33,8 @@ public class AdminLogin extends JFrame{
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        setPreferredSize(new Dimension(500, 500));
+        setPreferredSize(new Dimension(400, 400));
+        pack();
 
         btnAuthorise.addActionListener(new ActionListener() {
             @Override
@@ -58,6 +59,7 @@ public class AdminLogin extends JFrame{
                         && tempAdmin.getPassword().equals(subAdmins.get(x).getPassword())){
 
                             setVisible(false);
+
                             AdminKiosk Page = new AdminKiosk();
                             Page.setVisible(true);
                             break;
@@ -76,7 +78,7 @@ public class AdminLogin extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 AdminLogin main = new AdminLogin();
-                main.setVisible(false);
+                setVisible(false);
                 main.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
                 CustomerKiosk customerGUI = new CustomerKiosk();

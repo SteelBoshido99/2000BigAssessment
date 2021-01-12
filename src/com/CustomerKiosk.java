@@ -1,5 +1,6 @@
 package com;
 
+
 import KioskClasses.Stock;
 import KioskClasses.stockDataManager;
 
@@ -17,6 +18,9 @@ public class CustomerKiosk extends JFrame{
     private JPanel mainPanel;
     private JTextField txtScannedItem;
     private JLabel lblTotal;
+    private JButton btnCash;
+    private JButton btnCard;
+    private JTextArea txtReceipt;
 
 
     ArrayList<Stock> subStock = new ArrayList<>();
@@ -31,6 +35,11 @@ public class CustomerKiosk extends JFrame{
 
     public CustomerKiosk() {
 
+
+        btnCard.setVisible(false);
+        btnCash.setVisible(false);
+        txtReceipt.setVisible(false);
+
         stockDataManager display = new stockDataManager();
         display.stockLoad();
         setTempArrayStock(display.getStocks());
@@ -38,6 +47,7 @@ public class CustomerKiosk extends JFrame{
         setContentPane(mainPanel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(500, 500));
+        pack();
 
         btnLogin.addActionListener(new ActionListener() {
             @Override
@@ -45,8 +55,8 @@ public class CustomerKiosk extends JFrame{
                 AdminLogin loginPage = new AdminLogin();
                 loginPage.setVisible(true);
 
-                CustomerKiosk main = new CustomerKiosk();
-                main.setVisible(false);
+
+                setVisible(false);
             }
         });
 
@@ -60,38 +70,53 @@ public class CustomerKiosk extends JFrame{
                 addedStock.setItemID(txtScannedItem.getText());
 
                 try{
-                    for (int a = 0; a < subStock.size(); a ++){
-                        if (addedStock.getItemID().equals(subStock.get(a).getItemID())){
-                            /* This will check to see if the scanned item already exists in the basket
-                            and then add a multiplier to the item*/
+                    for (int a = 0; a < subStock.size(); a ++) {
+                        if (addedStock.getItemID().equals(subStock.get(a).getItemID())) {
 
-                           /*  if(addedStock.getItemID().equals(txtBasket.getText())){
+                            txtBasket.setText("");
 
-                                System.out.println("This can work");
+                            int activeShop = subStock.get(a).getActiveStock();
 
-                             }*/
+                            activeShop += 1;
 
-
-                            //Prints out the scanned item on a new line, by list form
-                            txtBasket.append(subStock.get(a).getItemName() + "\n");
+                            subStock.get(a).setActiveStock(activeShop);
 
 
+                           for(Stock stock : subStock){
+                               //Ensures that no scanned items are printed onto the basket
+                               if(stock.getActiveStock() > 0){
+                                   txtBasket.append(stock.getActiveStock() + "" + stock.getItemName() + ".....£"
+                                           + String.format("%.02f", stock.getItemPrice()) + " each" + "\n");
+                               }
+                           }
 
                             float basketTotal = subStock.get(a).getItemPrice();
                             //Provides a middle ground so that the accumulated total is displayed
-                            float runningTotal = Float.sum (basketTotal,finalTotal);
+                            float runningTotal = Float.sum(basketTotal, finalTotal);
                             finalTotal = runningTotal;
 
-
-                            String priceToString = String.format("%.02f",finalTotal);
+                            String priceToString = String.format("%.02f", finalTotal);
                             lblTotal.setText(" £ " + priceToString);
                             break;
 
+
+
                         }
                     }
-                }catch (Exception i){
-                    i.printStackTrace();
-                }
+
+                    }catch (Exception i){
+                        i.printStackTrace();
+                    }
+                txtScannedItem.setText("");
+            }
+        });
+
+        btnPay.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnCard.setVisible(true);
+                btnCash.setVisible(true);
+
             }
         });
     }
@@ -101,3 +126,13 @@ public class CustomerKiosk extends JFrame{
             mainKiosk.setVisible(true);
     }
 }
+
+ /*if (txtBasket.getText().equals("")) {
+
+                            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
+                                    "You did not enter a product.",
+                                    "No Item Found",
+                                    JOptionPane.WARNING_MESSAGE);
+                            break;
+                        } else {
+                        }*/

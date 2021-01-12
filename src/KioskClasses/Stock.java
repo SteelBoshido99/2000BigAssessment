@@ -6,6 +6,7 @@ public class Stock {
     private String ItemID;
     private float ItemPrice;
     private int Quantity;
+    private int ActiveStock;
 
 
     public String getItemName() {
@@ -38,5 +39,13 @@ public class Stock {
 
     public void setQuantity(int quantity) {
         Quantity = quantity;
+    }
+
+    public int getActiveStock() {
+        return ActiveStock;
+    }
+
+    public void setActiveStock(int activeStock) {
+        ActiveStock = activeStock;
     }
 }

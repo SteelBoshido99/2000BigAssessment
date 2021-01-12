@@ -43,6 +43,9 @@ public class stockDataManager {
                 int inItemNum = Integer.parseInt(stockData[3]);
                 newStock.setQuantity(inItemNum);
 
+                int inActiveNum = Integer.parseInt(stockData[4]);
+                newStock.setActiveStock(inActiveNum);
+
                 stocks.add(newStock);
             }
              stockScanner.close();
@@ -77,6 +80,9 @@ public class stockDataManager {
 
                 String inItemNum = Integer.toString(stocks.get(i).getQuantity());
                 data += "|" + inItemNum;
+
+                String inActiveNum = Integer.toString(stocks.get(i).getActiveStock());
+                data += "|" + inActiveNum;
 
                 stockWriter.write(data);
 
