@@ -3,13 +3,15 @@ package KioskClasses;
 import com.*;
 
 import javax.swing.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class receiptThreader extends Thread{
     public CustomerKiosk currentPayment;
 
 
-    public void swingLoaderCard(){
+    public void SwingLoader(){
 
         new SwingWorker<Object, Object>(){
 
@@ -18,7 +20,7 @@ public class receiptThreader extends Thread{
             @Override
             protected Object doInBackground() throws Exception {
 
-                final String cardTotal = "Shopping total: " + "£ "
+                final String payTotal = "Shopping total: " + "£"
                         + String.format("%.02f", currentPayment.finalTotal);
 
                 System.out.println("The current thread is: " + Thread.currentThread().getName());
@@ -27,14 +29,44 @@ public class receiptThreader extends Thread{
 
                 Thread.sleep(1000);
 
-                cardReceipt = "Store Name: Piff Tings" + "\n" + " \n" + "Store no: 4203869 " + "\n" +
-                        "Contact: 01935 653245" + "\n" + "\n" + CustomerKiosk.currentReceipt
-                        + "\n" + "\n" + "\n" + cardTotal + "\n" + "\n" + "\n" + "Card Payment of: "
-                        + "£" + String.format("%.02f", currentPayment.finalTotal)
-                        + "\n" + "No Change Given";
+                currentPayment.txtReceipt.setText("");
 
-                currentPayment.txtReceipt.setText(String.valueOf(cardReceipt));
-                currentPayment.setVisible(true);
+                cardReceipt = "Piff Tings" + "\n" + " \n" + "Store no: 4203869 " + "\n" +
+                        "Contact: 01935 653245" + "\n" + "\n" + CustomerKiosk.currentReceipt
+                        + "\n" + "\n" + "\n"  + payTotal + "\n" + "\n";
+
+                /*+ payTotal + "\n" + "\n" + "\n" + "Card Payment of: "
+                        + "£" + String.format("%.02f", currentPayment.finalTotal)
+                        + "\n" + "No Change Given";*/
+
+                currentPayment.setTxtReceipt(cardReceipt);
+
+                if(currentPayment.cashOrCard == 1) {
+
+                    cardReceipt = "Card Payment of: £" + String.format("%.02f", currentPayment.finalTotal)
+                    + "\n" + "\n" + "No Change Given";
+
+                    currentPayment.setTxtReceipt(cardReceipt);
+                }
+
+                if(currentPayment.cashOrCard == 2){
+
+                    cardReceipt = "Cash payment of: £" + String.format("%.02f",currentPayment.payment)
+                            + "\n" + "\n" + "Change Given: £" + currentPayment.cashChange;
+
+                    currentPayment.setTxtReceipt(cardReceipt);
+                }
+
+              /* SimpleDateFormat activeTime = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                Date now = new Date();
+
+                final String receiptDate = (activeTime.format(now));
+
+                cardReceipt = receiptDate;*/
+
+
+
+
 
 
                 return null;
@@ -44,7 +76,7 @@ public class receiptThreader extends Thread{
 
 
 
-    public void cashSwingLoader(){
+    /*public void cashSwingLoader(){
 
         new SwingWorker<Object, Object>(){
 
@@ -81,6 +113,6 @@ public class receiptThreader extends Thread{
             }
 
         }.execute();
-    }
+    }*/
 
 }

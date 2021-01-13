@@ -30,9 +30,11 @@ public class CustomerKiosk extends JFrame{
     public static String currentReceipt;
     public JTextField txtPayment;
     public static Object currentKiosk;
-    int cashOrCard;
+    public static int cashOrCard;
+    public float payment;
 
-
+    public static float finalTotal = 0f;
+    public static String cashChange;
 
     public static ArrayList <Stock> subStock = new ArrayList<>();
 
@@ -41,11 +43,12 @@ public class CustomerKiosk extends JFrame{
     }
 
 
-    public static float finalTotal = 0f;
-    public static String cashChange;
-
     public JLabel getLblTotal() {
         return lblTotal;
+    }
+
+    public void setTxtReceipt(String txtInReceipt) {
+        txtReceipt.append(txtInReceipt);
     }
 
     public CustomerKiosk() {
@@ -195,7 +198,7 @@ public class CustomerKiosk extends JFrame{
         btnSubTotal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                float payment = Float.parseFloat(txtPayment.getText());
+                payment = Float.parseFloat(txtPayment.getText());
                 cashChange = String.valueOf(String.format("%.02f", payment - finalTotal) );
                 lblChange.setVisible(true);
                 lblChange.setText("Change " + "£ " + cashChange);
@@ -217,16 +220,8 @@ public class CustomerKiosk extends JFrame{
                 receiptThreader pay = new receiptThreader();
                 pay.currentPayment = (CustomerKiosk) currentKiosk;
 
+                    pay.SwingLoader();
 
-                if(cashOrCard == 1){
-
-                    pay.swingLoaderCard();
-
-                } else {
-
-                    pay.cashSwingLoader();
-
-                }
             }
         });
 
