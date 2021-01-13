@@ -1,8 +1,7 @@
 package com;
 
 
-import KioskClasses.Stock;
-import KioskClasses.stockDataManager;
+import KioskClasses.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,19 +10,31 @@ import java.awt.event.ActionListener;
 import java.util.*;
 
 public class CustomerKiosk extends JFrame{
-    private JTextArea txtBasket;
     private JButton btnPay;
     private JButton btnLogin;
     private JButton btnAdd;
     private JPanel mainPanel;
     private JTextField txtScannedItem;
+    private JButton btnSubTotal;
     private JLabel lblTotal;
     private JButton btnCash;
     private JButton btnCard;
-    private JTextArea txtReceipt;
+    private JButton btnPrint;
+    private JLabel lblChange;
+    private JLabel lblPin;
+    private JTextField txtPin;
+    private JButton btnVerify;
+
+    public  JTextArea txtReceipt;
+    public JTextArea txtBasket;
+    public static String currentReceipt;
+    public JTextField txtPayment;
+    public static Object currentKiosk;
+    int cashOrCard;
 
 
-    ArrayList<Stock> subStock = new ArrayList<>();
+
+    public static ArrayList <Stock> subStock = new ArrayList<>();
 
     public void setTempArrayStock(ArrayList<Stock> tempStock){
         this.subStock = tempStock;
@@ -31,14 +42,26 @@ public class CustomerKiosk extends JFrame{
 
 
     public static float finalTotal = 0f;
+    public static String cashChange;
 
+    public JLabel getLblTotal() {
+        return lblTotal;
+    }
 
     public CustomerKiosk() {
-
+        currentKiosk = this;
 
         btnCard.setVisible(false);
         btnCash.setVisible(false);
+        txtPayment.setVisible(false);
+        btnPrint.setVisible(false);
+        btnSubTotal.setVisible(false);
+        lblChange.setVisible(false);
+        lblPin.setVisible(false);
+        txtPin.setVisible(false);
+        btnVerify.setVisible(false);
         txtReceipt.setVisible(false);
+
 
         stockDataManager display = new stockDataManager();
         display.stockLoad();
@@ -59,7 +82,6 @@ public class CustomerKiosk extends JFrame{
                 setVisible(false);
             }
         });
-
 
 
         btnAdd.addActionListener(new ActionListener() {
@@ -83,26 +105,27 @@ public class CustomerKiosk extends JFrame{
 
 
                            for(Stock stock : subStock){
-                               //Ensures that no scanned items are printed onto the basket
+                               //Ensures items that have not been scanned are left out the basket
                                if(stock.getActiveStock() > 0){
-                                   txtBasket.append(stock.getActiveStock() + "" + stock.getItemName() + ".....£"
-                                           + String.format("%.02f", stock.getItemPrice()) + " each" + "\n");
+                                   txtBasket.append(stock.getActiveStock() + " x " + ""
+                                           + stock.getItemName() + ".....£"
+                                           + String.format("%.02f", stock.getItemPrice())
+                                           + " each" + "\n");
                                }
                            }
-
                             float basketTotal = subStock.get(a).getItemPrice();
                             //Provides a middle ground so that the accumulated total is displayed
                             float runningTotal = Float.sum(basketTotal, finalTotal);
                             finalTotal = runningTotal;
 
                             String priceToString = String.format("%.02f", finalTotal);
-                            lblTotal.setText(" £ " + priceToString);
+                            lblTotal.setText("Total: " + " £ " + priceToString);
                             break;
-
-
-
                         }
                     }
+
+                    //------
+                    currentReceipt = txtBasket.getText();
 
                     }catch (Exception i){
                         i.printStackTrace();
@@ -116,16 +139,114 @@ public class CustomerKiosk extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 btnCard.setVisible(true);
                 btnCash.setVisible(true);
+            }
+        });
+
+
+
+//This will only involve the card payment
+        btnCard.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnCash.setVisible(false);
+                txtPin.setVisible(true);
+                lblPin.setVisible(true);
+                btnVerify.setVisible(true);
+                cashOrCard = 1;
+            }
+        });
+
+        btnVerify.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                int inPin = Integer.parseInt(txtPin.getText());
+
+                if(inPin == 6942){
+                    txtPin.setText("Pin Accepted");
+                    txtPin.enable(false);
+                    btnPrint.setVisible(true);
+                } else {
+                    txtPin.setText("");
+                    JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
+                            "Wrong pin number",
+                            "Wrong pin",
+                            JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
+
+
+//This will only involve the cash payments
+        btnCash.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                btnSubTotal.setVisible(true);
+                txtPayment.setVisible(true);
+                btnCard.setVisible(false);
+                cashOrCard = 2;
 
             }
         });
+
+
+        btnSubTotal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                float payment = Float.parseFloat(txtPayment.getText());
+                cashChange = String.valueOf(String.format("%.02f", payment - finalTotal) );
+                lblChange.setVisible(true);
+                lblChange.setText("Change " + "£ " + cashChange);
+                btnPrint.setVisible(true);
+
+            }
+        });
+
+
+
+        btnPrint.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                lblTotal.setVisible(false);
+                txtBasket.setVisible(false);
+                txtReceipt.setVisible(true);
+                txtReceipt.setEditable(false);
+
+                receiptThreader pay = new receiptThreader();
+                pay.currentPayment = (CustomerKiosk) currentKiosk;
+
+
+                if(cashOrCard == 1){
+
+                    pay.swingLoaderCard();
+
+                } else {
+
+                    pay.cashSwingLoader();
+
+                }
+            }
+        });
+
     }
 
     public static void main(String[] args) {
         CustomerKiosk mainKiosk = new CustomerKiosk();
             mainKiosk.setVisible(true);
     }
+
+
+
+
+
 }
+//Will reset the Active Stock
+/*for (com.products products: adminProducts ) {
+        products.setProductQuantity(0);
+        }*/
+
 
  /*if (txtBasket.getText().equals("")) {
 

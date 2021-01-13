@@ -36,15 +36,16 @@ public class AdminLogin extends JFrame{
         setPreferredSize(new Dimension(400, 400));
         pack();
 
+
+
         btnAuthorise.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Boolean errorCatch = false;
 
                 adminDataManager staffLogin = new adminDataManager();
                 staffLogin.adminLoad();
                 setTempArrayAdmin(staffLogin.getAdmins());
-
-
 
                 //Instantiates an the input Admin account and stores it in the temporary Array
                 Admin tempAdmin = new Admin();
@@ -62,14 +63,23 @@ public class AdminLogin extends JFrame{
 
                             AdminKiosk Page = new AdminKiosk();
                             Page.setVisible(true);
+                            errorCatch = false;
                             break;
-
-                        }else{
-                            System.out.println("Incorrect username or password");
                         }
+                        errorCatch = true;
+
                     }
+
                 }catch(Exception r){
                     r.printStackTrace();
+                }
+                if(errorCatch == true){
+                    txtPassword.setText("");
+                    txtUsername.setText("");
+                    JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
+                            "Wrong password or username",
+                            "Wrong details",
+                            JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
@@ -86,6 +96,8 @@ public class AdminLogin extends JFrame{
             }
         });
     }
+
+
 
 
     public static void main(String[] args) {
