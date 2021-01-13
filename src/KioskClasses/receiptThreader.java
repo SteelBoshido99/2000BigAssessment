@@ -3,8 +3,8 @@ package KioskClasses;
 import com.*;
 
 import javax.swing.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 
 public class receiptThreader extends Thread{
@@ -57,12 +57,11 @@ public class receiptThreader extends Thread{
                     currentPayment.setTxtReceipt(cardReceipt);
                 }
 
-              /* SimpleDateFormat activeTime = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                Date now = new Date();
+               /* DateTimeFormatter nowTime = DateTimeFormatter.ofPattern("dd/mm/yyy | HH:mm:ss");
+                LocalDateTime now = LocalDateTime.now();
 
-                final String receiptDate = (activeTime.format(now));
 
-                cardReceipt = receiptDate;*/
+                cardReceipt = "\n" + nowTime.format(now);*/
 
 
 
