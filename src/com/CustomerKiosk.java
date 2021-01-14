@@ -218,7 +218,7 @@ public class CustomerKiosk extends JFrame{
                 txtReceipt.setEditable(false);
 
                 receiptThreader pay = new receiptThreader();
-                pay.currentPayment = (CustomerKiosk) currentKiosk;
+                pay.activeReceipt = (CustomerKiosk) currentKiosk;
 
                     pay.SwingLoader();
 

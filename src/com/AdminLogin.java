@@ -97,11 +97,4 @@ public class AdminLogin extends JFrame{
         });
     }
 
-
-
-
-    public static void main(String[] args) {
-        AdminLogin Page = new AdminLogin();
-        Page.setVisible(true);
-    }
 }

@@ -32,7 +32,6 @@ public class stockDataManager {
 
                 Stock newStock = new Stock();
 
-
                 newStock.setItemID(stockData[0]);
 
                 newStock.setItemName(stockData[1]);
@@ -51,8 +50,6 @@ public class stockDataManager {
              stockScanner.close();
 
             System.out.println("Stock file successfully loaded");
-
-
 
         }catch (FileNotFoundException e) {
             e.printStackTrace();
