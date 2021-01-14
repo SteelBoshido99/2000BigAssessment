@@ -44,7 +44,7 @@ public class AdminKiosk extends JFrame{
             setPreferredSize(new Dimension(500, 500));
             pack();
 
-            String[] columnNames = {"Barcode", "Item", "Price", "Stock"};
+            String[] columnNames = {"Barcode", "Item", "(£)Price", "Stock"};
 
             tempTable = new DefaultTableModel(columnNames, 0);
             tblStock.setModel(tempTable);
@@ -57,8 +57,6 @@ public class AdminKiosk extends JFrame{
                 Object[] data ={Stock.getItemID(),Stock.getItemName(), Stock.getItemPrice(), Stock.getQuantity()};
                 tempTable.addRow(data);
             }
-
-
 
 
             btnCheck.addActionListener(new ActionListener() {
@@ -110,6 +108,7 @@ public class AdminKiosk extends JFrame{
 
                     dispose();
                     setVisible(true);
+                    tblStock.setEnabled(false);
 
                 }
             });

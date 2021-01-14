@@ -24,7 +24,10 @@ public class CustomerKiosk extends JFrame{
     private JLabel lblPin;
     private JTextField txtPin;
     private JButton btnVerify;
+    private JLabel lblCashPayment;
+    private JButton btnEnd;
 
+    //These need to be public so that the Threading class can access them
     public  JTextArea txtReceipt;
     public JTextArea txtBasket;
     public static String currentReceipt;
@@ -32,16 +35,15 @@ public class CustomerKiosk extends JFrame{
     public static Object currentKiosk;
     public static int cashOrCard;
     public float payment;
-
     public static float finalTotal = 0f;
     public static String cashChange;
 
+    //Creates an array in the Customer Kiosk to allow for manipulation of data
     public static ArrayList <Stock> subStock = new ArrayList<>();
 
     public void setTempArrayStock(ArrayList<Stock> tempStock){
         this.subStock = tempStock;
     }
-
 
     public JLabel getLblTotal() {
         return lblTotal;
@@ -64,11 +66,15 @@ public class CustomerKiosk extends JFrame{
         txtPin.setVisible(false);
         btnVerify.setVisible(false);
         txtReceipt.setVisible(false);
-
+        lblCashPayment.setVisible(false);
+        btnEnd.setVisible(false);
 
         stockDataManager display = new stockDataManager();
+
+
         display.stockLoad();
         setTempArrayStock(display.getStocks());
+
 
         setContentPane(mainPanel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -91,8 +97,17 @@ public class CustomerKiosk extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                if (String.valueOf(txtScannedItem.getText()).equals("")) {
+
+                    JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
+                            "You did not enter a product.",
+                            "No Item Found",
+                            JOptionPane.WARNING_MESSAGE);
+                }
+
                 Stock addedStock = new Stock();
                 addedStock.setItemID(txtScannedItem.getText());
+
 
                 try{
                     for (int a = 0; a < subStock.size(); a ++) {
@@ -100,13 +115,32 @@ public class CustomerKiosk extends JFrame{
 
                             txtBasket.setText("");
 
+                            int CustStock = subStock.get(a).getQuantity();
+
                             int activeShop = subStock.get(a).getActiveStock();
 
-                            activeShop += 1;
+                            int newStockNum = 0;
+
+                            if(subStock.get(a).getQuantity() < 5){
+                                txtScannedItem.setText("");
+
+                                JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
+                                        "No more stock of: " + subStock.get(a).getItemName(),
+                                        "No more Stock",
+                                        JOptionPane.WARNING_MESSAGE);
+
+                            }else{
+                                activeShop += 1;
+
+                                newStockNum = CustStock - activeShop;
+                            }
+
 
                             subStock.get(a).setActiveStock(activeShop);
+                            subStock.get(a).setQuantity(newStockNum);
+                            display.saveStock();
 
-
+                            //for each object inside this object do this
                            for(Stock stock : subStock){
                                //Ensures items that have not been scanned are left out the basket
                                if(stock.getActiveStock() > 0){
@@ -127,12 +161,13 @@ public class CustomerKiosk extends JFrame{
                         }
                     }
 
-                    //------
+                    //Places the items in the txt in an Object (For threading)
                     currentReceipt = txtBasket.getText();
 
                     }catch (Exception i){
                         i.printStackTrace();
                     }
+
                 txtScannedItem.setText("");
             }
         });
@@ -144,7 +179,6 @@ public class CustomerKiosk extends JFrame{
                 btnCash.setVisible(true);
             }
         });
-
 
 
 //This will only involve the card payment
@@ -186,6 +220,7 @@ public class CustomerKiosk extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                lblCashPayment.setVisible(true);
                 btnSubTotal.setVisible(true);
                 txtPayment.setVisible(true);
                 btnCard.setVisible(false);
@@ -220,11 +255,39 @@ public class CustomerKiosk extends JFrame{
                 receiptThreader pay = new receiptThreader();
                 pay.activeReceipt = (CustomerKiosk) currentKiosk;
 
-                    pay.SwingLoader();
+                pay.SwingLoader();
+
+                //Will reset the Active Stock
+                for (KioskClasses.Stock Stock: subStock ) {
+                    Stock.setActiveStock(0);
+                    display.saveStock();
+                }
+
+                btnCard.setVisible(false);
+                btnCash.setVisible(false);
+                txtPayment.setVisible(false);
+                btnPrint.setVisible(false);
+                btnSubTotal.setVisible(false);
+                lblChange.setVisible(false);
+                lblPin.setVisible(false);
+                txtPin.setVisible(false);
+                btnVerify.setVisible(false);
+                lblCashPayment.setVisible(false);
+                btnEnd.setVisible(true);
 
             }
         });
 
+        btnEnd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CustomerKiosk newKiosk = new CustomerKiosk();
+                newKiosk.setVisible(true);
+
+                dispose();
+
+            }
+        });
     }
 
     public static void main(String[] args) {
@@ -232,23 +295,4 @@ public class CustomerKiosk extends JFrame{
             mainKiosk.setVisible(true);
     }
 
-
-
-
-
 }
-//Will reset the Active Stock
-/*for (com.products products: adminProducts ) {
-        products.setProductQuantity(0);
-        }*/
-
-
- /*if (txtBasket.getText().equals("")) {
-
-                            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
-                                    "You did not enter a product.",
-                                    "No Item Found",
-                                    JOptionPane.WARNING_MESSAGE);
-                            break;
-                        } else {
-                        }*/

@@ -19,11 +19,11 @@ public class AdminLogin extends JFrame{
 
 
 
-    //Creates a local array that will temporarily store the input account details
+    //Creates a local array that will temporarily store the scanned account details
     private ArrayList<Admin> subAdmins = new ArrayList<>();
 
-    public void setTempArrayAdmin(ArrayList<Admin> tempAdmin){
-        this.subAdmins = tempAdmin;
+    public void setTempArrayAdmin(ArrayList<Admin> subAdmin){
+        this.subAdmins = subAdmin;
     }
 
 
