@@ -10,7 +10,7 @@
     </ATTRIBUTES>
     <DEPENDENCIES>
       <COMP relation="Model">
-        <COMPID name="bigassessment" mc="Standard.Package" uid="158f9a3f-ea52-4f55-bb18-8055ceef53b8"/>
+        <COMPID name="Model" mc="Standard.Package" uid="d48db48d-8255-42fa-9200-0d371f0e11c4"/>
       </COMP>
       <COMP relation="DiagramRoot">
         <COMPID name="BigAssessment" mc="Infrastructure.DiagramSet" uid="bd632c09-080d-4d6a-abf5-6ff550f43d1f"/>

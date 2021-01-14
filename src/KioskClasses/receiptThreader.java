@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 
 public class receiptThreader extends Thread{
+    //will be a container for the initialised Customer Kiosk to allow for this class to use everything in the Customer Kiosk
     public CustomerKiosk activeReceipt;
 
 
@@ -54,6 +55,7 @@ public class receiptThreader extends Thread{
                     activeReceipt.setTxtReceipt(shopReceipt);
                 }
 
+                //Calculates the date of the transaction
                 DateTimeFormatter nowTime = DateTimeFormatter.ofPattern("dd/mm/yyy | HH:mm:ss");
                 LocalDateTime now = LocalDateTime.now();
 
@@ -61,11 +63,6 @@ public class receiptThreader extends Thread{
                 shopReceipt = "\n "+ "\n" + "Transaction Closed"+ "\n" + nowTime.format(now);
 
                 activeReceipt.setTxtReceipt(shopReceipt);
-
-
-
-
-
 
                 return null;
             }

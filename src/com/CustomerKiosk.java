@@ -54,6 +54,7 @@ public class CustomerKiosk extends JFrame{
     }
 
     public CustomerKiosk() {
+        //Creates an instance of CustomerKiosk and places it the Object
         currentKiosk = this;
 
         btnCard.setVisible(false);
@@ -79,6 +80,7 @@ public class CustomerKiosk extends JFrame{
         setContentPane(mainPanel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(500, 500));
+        setTitle("Customer Kiosk");
         pack();
 
         btnLogin.addActionListener(new ActionListener() {
@@ -96,7 +98,7 @@ public class CustomerKiosk extends JFrame{
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                //Checks to see if the Scanned text field is empty
                 if (String.valueOf(txtScannedItem.getText()).equals("")) {
 
                     JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
@@ -114,16 +116,21 @@ public class CustomerKiosk extends JFrame{
                         if (addedStock.getItemID().equals(subStock.get(a).getItemID())) {
 
                             txtBasket.setText("");
-
+                            //Gets the value of the stock levels
                             int CustStock = subStock.get(a).getQuantity();
 
+                            //Gets the value of the active stock levels
                             int activeShop = subStock.get(a).getActiveStock();
 
+                            //A variable for the total of Stock - Active stock
                             int newStockNum = 0;
 
-                            if(subStock.get(a).getQuantity() < 5){
+
+                            //Checks to see if stock is at 0, if not for the stock calculation
+                            if(subStock.get(a).getQuantity() == 0){
                                 txtScannedItem.setText("");
 
+                                //Shoots a message to notify the customer that their scanned item has now more stock
                                 JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
                                         "No more stock of: " + subStock.get(a).getItemName(),
                                         "No more Stock",
@@ -134,7 +141,6 @@ public class CustomerKiosk extends JFrame{
 
                                 newStockNum = CustStock - activeShop;
                             }
-
 
                             subStock.get(a).setActiveStock(activeShop);
                             subStock.get(a).setQuantity(newStockNum);
@@ -155,6 +161,7 @@ public class CustomerKiosk extends JFrame{
                             float runningTotal = Float.sum(basketTotal, finalTotal);
                             finalTotal = runningTotal;
 
+                            //Shows the final total of the compiled basket
                             String priceToString = String.format("%.02f", finalTotal);
                             lblTotal.setText("Total: " + " £ " + priceToString);
                             break;
@@ -168,6 +175,7 @@ public class CustomerKiosk extends JFrame{
                         i.printStackTrace();
                     }
 
+                //Clears the scanned item txt field
                 txtScannedItem.setText("");
             }
         });
@@ -189,6 +197,7 @@ public class CustomerKiosk extends JFrame{
                 txtPin.setVisible(true);
                 lblPin.setVisible(true);
                 btnVerify.setVisible(true);
+                //Determines whether the Threader class should use the card related outcome
                 cashOrCard = 1;
             }
         });
@@ -197,8 +206,10 @@ public class CustomerKiosk extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                    //Gets the string from the Pin text field and places it in an int
                 int inPin = Integer.parseInt(txtPin.getText());
 
+                //Compares the input value with the set pin
                 if(inPin == 6942){
                     txtPin.setText("Pin Accepted");
                     txtPin.enable(false);
@@ -224,6 +235,7 @@ public class CustomerKiosk extends JFrame{
                 btnSubTotal.setVisible(true);
                 txtPayment.setVisible(true);
                 btnCard.setVisible(false);
+                //Determines whether the Threader class should use the cash related outcome
                 cashOrCard = 2;
 
             }
@@ -233,6 +245,7 @@ public class CustomerKiosk extends JFrame{
         btnSubTotal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //Calculates the change for the customer if cash was used
                 payment = Float.parseFloat(txtPayment.getText());
                 cashChange = String.valueOf(String.format("%.02f", payment - finalTotal) );
                 lblChange.setVisible(true);
@@ -253,11 +266,13 @@ public class CustomerKiosk extends JFrame{
                 txtReceipt.setEditable(false);
 
                 receiptThreader pay = new receiptThreader();
+
+                //Places the instance of CustomerKiosk into activeReceipt in the Threading Class
                 pay.activeReceipt = (CustomerKiosk) currentKiosk;
 
                 pay.SwingLoader();
 
-                //Will reset the Active Stock
+                //Will reset the Active Stock to 0
                 for (KioskClasses.Stock Stock: subStock ) {
                     Stock.setActiveStock(0);
                     display.saveStock();
@@ -281,6 +296,7 @@ public class CustomerKiosk extends JFrame{
         btnEnd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //Creates a new Kiosk for another transaction
                 CustomerKiosk newKiosk = new CustomerKiosk();
                 newKiosk.setVisible(true);
 

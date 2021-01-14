@@ -2,7 +2,7 @@
 <!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="com" version="4">
   <OBJECT>
     <ID name="com" mc="Standard.Package" uid="158f9a3f-ea52-4f55-bb18-8055ceef53b8"/>
-    <PID name="BigAssessment" mc="Standard.Project" uid="fc007d4d-ce3c-4ee3-979e-f20c6dd9bd57"/>
+    <PID name="Model" mc="Standard.Package" uid="d48db48d-8255-42fa-9200-0d371f0e11c4"/>
     <ATTRIBUTES>
       <ATT name="IsInstantiable">false</ATT>
       <ATT name="IsAbstract">false</ATT>
@@ -14,15 +14,9 @@
     </ATTRIBUTES>
     <DEPENDENCIES>
       <COMP relation="OwnedElement">
-        <COMPID name="GeneralInterface" mc="Standard.Interface" uid="5264c32f-b1f5-4245-a44d-285432bd711d"/>
-        <COMPID name="Recipt" mc="Standard.Class" uid="d61396da-055a-4484-931e-e97c50a07fb1"/>
-        <COMPID name="Login" mc="Standard.Interface" uid="7f6f6631-f651-46da-85db-0b6e84c48a23"/>
-        <COMPID name="Stock" mc="Standard.Interface" uid="2d7f50fe-d1c7-451e-8978-666899dccdc8"/>
-        <COMPID name="CustomerGUI" mc="Standard.Class" uid="7baaf69b-a7e2-4ba3-8f67-0f774e5976b0"/>
-        <COMPID name="StockDisp" mc="Standard.Class" uid="42d2283d-b489-439f-811b-12944cc207d3"/>
-        <COMPID name="Admin" mc="Standard.Class" uid="7e03af2e-1aa5-48e2-9092-0ea99d7b8ffe"/>
-        <COMPID name="adminDataManager" mc="Standard.Class" uid="02d42d4b-b668-4b82-abba-b183e4557105"/>
-        <COMPID name="Stock" mc="Standard.Class" uid="63de727e-c1dd-47ee-aeb4-95be19c56fdb"/>
+        <COMPID name="CustomerKiosk" mc="Standard.Class" uid="4275a25c-561a-45c6-9a3f-944f0cc3127c"/>
+        <COMPID name="AdminKiosk" mc="Standard.Class" uid="b29f5768-6f37-43b5-bb6e-056c7b4b6206"/>
+        <COMPID name="AdminLogin" mc="Standard.Class" uid="4ee0dfe6-348c-47a3-b51f-86f74f974957"/>
       </COMP>
       <LINK relation="Extension">
         <FOREIGNID name="JavaPackage" mc="Infrastructure.Stereotype" uid="01ec23a8-0000-0126-0000-000000000000"/>

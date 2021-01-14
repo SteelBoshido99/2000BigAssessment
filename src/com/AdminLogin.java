@@ -34,6 +34,8 @@ public class AdminLogin extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         setPreferredSize(new Dimension(400, 400));
+
+        setTitle("Admin Login");
         pack();
 
 
@@ -41,6 +43,7 @@ public class AdminLogin extends JFrame{
         btnAuthorise.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //Will trigger an if statement later in the ActionListener
                 Boolean errorCatch = false;
 
                 adminDataManager staffLogin = new adminDataManager();
@@ -73,6 +76,8 @@ public class AdminLogin extends JFrame{
                 }catch(Exception r){
                     r.printStackTrace();
                 }
+
+                //Needs to be out of the for loop to allow for other admin details to be read
                 if(errorCatch == true){
                     txtPassword.setText("");
                     txtUsername.setText("");

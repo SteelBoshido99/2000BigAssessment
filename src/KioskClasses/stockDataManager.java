@@ -15,14 +15,13 @@ public class stockDataManager extends Admin {
     private ArrayList<Stock> stocks = new ArrayList<>();
 
 
-    //This will load in the stock data from the specified file path
+    //This will load in the stock data from the specified file path and save the values in the Array list
     public void stockLoad(){
 
         try{
 
             File stockFile = new File(stockPath);
 
-            //Scanning
             Scanner stockScanner = new Scanner(stockFile);
             while(stockScanner.hasNextLine()){
 
@@ -57,6 +56,7 @@ public class stockDataManager extends Admin {
     }
 
 
+    //Will write into the file the new set values
     public void saveStock (){
         try{
             FileWriter stockWriter  = new FileWriter (stockPath);

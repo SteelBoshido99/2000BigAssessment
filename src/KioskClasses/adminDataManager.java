@@ -16,6 +16,7 @@ public class adminDataManager extends Admin {
         return admins;
     }
 
+    //This will load in the admin data from the specified file path and save the values in the Array list
     public void adminLoad(){
 
         try{

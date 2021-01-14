@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="KioskClasses" version="4">
+  <OBJECT>
+    <ID name="KioskClasses" mc="Standard.Package" uid="58c8b3e4-c924-424b-96c4-30b446617919"/>
+    <PID name="Model" mc="Standard.Package" uid="d48db48d-8255-42fa-9200-0d371f0e11c4"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[KioskClasses]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="receiptThreader" mc="Standard.Class" uid="39ba5ed5-797d-4d8b-9f89-41716f508689"/>
+        <COMPID name="Admin" mc="Standard.Class" uid="e072a738-f120-4b92-a0a4-da13217ef7f1"/>
+        <COMPID name="adminDataManager" mc="Standard.Class" uid="928cea58-5a45-4cf2-8beb-216e33e6c4d8"/>
+        <COMPID name="Stock" mc="Standard.Class" uid="75d98ece-4d58-4f5a-80b8-4ed96ec82a34"/>
+        <COMPID name="stockDataManager" mc="Standard.Class" uid="5b1ab5ff-5b5a-4bd2-ae72-7111ebb77d93"/>
+      </COMP>
+      <LINK relation="Extension">
+        <FOREIGNID name="JavaPackage" mc="Infrastructure.Stereotype" uid="01ec23a8-0000-0126-0000-000000000000"/>
+      </LINK>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

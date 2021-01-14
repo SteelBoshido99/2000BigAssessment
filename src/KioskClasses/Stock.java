@@ -2,6 +2,7 @@ package KioskClasses;
 
 public class Stock {
 
+    //Must be private so that other classes can't alter the values wrongly
     private String ItemName;
     private String ItemID;
     private float ItemPrice;
@@ -9,6 +10,7 @@ public class Stock {
     private int ActiveStock;
 
 
+    //Gets and Sets ensure that the correct type of variables are being used
     public String getItemName() {
         return ItemName;
     }
