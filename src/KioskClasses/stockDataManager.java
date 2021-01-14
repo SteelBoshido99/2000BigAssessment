@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class stockDataManager extends Admin {
+public class stockDataManager extends Stock {
 
     public String stockPath = "resources\\Stock.txt";
     public String separator = "\\|";

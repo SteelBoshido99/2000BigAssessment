@@ -1,10 +1,8 @@
 <component name="ArtifactManager">
-  <artifact name="2000BigAssessment:jar">
+  <artifact type="jar" name="2000BigAssessment:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/2000BigAssessment_jar</output-path>
-    <root id="root">
-      <element id="archive" name="2000BigAssessment.jar">
-        <element id="module-output" name="2000BigAssessment" />
-      </element>
+    <root id="archive" name="2000BigAssessment.jar">
+      <element id="module-output" name="2000BigAssessment" />
     </root>
   </artifact>
 </component>

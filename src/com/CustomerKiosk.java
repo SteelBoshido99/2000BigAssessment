@@ -110,7 +110,6 @@ public class CustomerKiosk extends JFrame{
                 Stock addedStock = new Stock();
                 addedStock.setItemID(txtScannedItem.getText());
 
-
                 try{
                     for (int a = 0; a < subStock.size(); a ++) {
                         if (addedStock.getItemID().equals(subStock.get(a).getItemID())) {
@@ -128,6 +127,7 @@ public class CustomerKiosk extends JFrame{
 
                             //Checks to see if stock is at 0, if not for the stock calculation
                             if(subStock.get(a).getQuantity() == 0){
+
                                 txtScannedItem.setText("");
 
                                 //Shoots a message to notify the customer that their scanned item has now more stock
@@ -144,6 +144,7 @@ public class CustomerKiosk extends JFrame{
 
                             subStock.get(a).setActiveStock(activeShop);
                             subStock.get(a).setQuantity(newStockNum);
+
                             display.saveStock();
 
                             //for each object inside this object do this
@@ -296,12 +297,12 @@ public class CustomerKiosk extends JFrame{
         btnEnd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                dispose();
                 //Creates a new Kiosk for another transaction
                 CustomerKiosk newKiosk = new CustomerKiosk();
                 newKiosk.setVisible(true);
 
-                dispose();
-
+                finalTotal = 0;
             }
         });
     }
