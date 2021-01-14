@@ -23,7 +23,6 @@
         <COMPID name="Admin" mc="Standard.Class" uid="7e03af2e-1aa5-48e2-9092-0ea99d7b8ffe"/>
         <COMPID name="adminDataManager" mc="Standard.Class" uid="02d42d4b-b668-4b82-abba-b183e4557105"/>
         <COMPID name="Stock" mc="Standard.Class" uid="63de727e-c1dd-47ee-aeb4-95be19c56fdb"/>
-        <COMPID name="JFrame" mc="Standard.Class" uid="e8b353d7-9fc6-4ff2-8274-b53008a36a47"/>
       </COMP>
       <LINK relation="Extension">
         <FOREIGNID name="JavaPackage" mc="Infrastructure.Stereotype" uid="01ec23a8-0000-0126-0000-000000000000"/>
